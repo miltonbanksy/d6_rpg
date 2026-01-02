@@ -1,0 +1,44 @@
+html {
+    padding: 10px;
+    max-width: 500px;
+    font-size: 14px;
+}
+
+details {
+    padding: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    background-color: beige;
+    border-radius: 10px;
+}
+
+summary {
+    cursor: pointer;
+}
+
+.indent {
+    text-indent: 2em;
+    margin: 0;
+}
+
+.orange {
+    color: orangered;
+}
+
+#img-d6 {
+    width:fit-content;
+    height: 20px;
+}
+
+.spin {
+    animation: spin 4s linear alternate infinite;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
