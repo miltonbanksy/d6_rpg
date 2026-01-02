@@ -17,6 +17,11 @@ const actionOutcomes = [
             {roll: 4, element_id: "action-4"},
             {roll: 1, element_id: "action-1"}
         ];
+
+        // To do...
+        const newSceneFormats = [
+            {roll: 6, elementId: ""}
+        ]
         
         const imgD6 = document.getElementById('img-d6');
         const btnD6NewSceneFormat = document.getElementById('btn-d6-new-scene-format');
