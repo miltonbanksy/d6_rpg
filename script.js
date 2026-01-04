@@ -97,7 +97,7 @@ const actionOutcomes = [
         });
 
         btnDelvingJourneying.addEventListener('click', () => {
-            
+
         });
 
         
@@ -110,6 +110,8 @@ const actionOutcomes = [
                 element.classList.remove('orange');
             });
         };
+
+        // new function to combine reverting elements to black
 
         // Change Twist Focus Elements to black
         function revertTwistFocusElementsToBlack() {
