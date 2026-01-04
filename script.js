@@ -30,6 +30,8 @@ const actionOutcomes = [
         const btnD6x = document.getElementById('btn-d6-x');
         const btnD6b = document.getElementById('btn-d6-b');
         const btnForceRandomEvent = document.getElementById('btn-force-random-event');
+        const detailTakingAction = document.getElementById('detail-taking-action');
+        const titleRandomEvent = document.getElementById('title-random-event');
 
         // // LISTENERS
         imgD6.addEventListener('click', () => {
@@ -51,10 +53,24 @@ const actionOutcomes = [
         });
 
         function twistYes() {
+
+            // new...
+
+            
+            // change 'detail' color on random event
+            // This resets fine. black > orange > black √
+            titleRandomEvent.classList.add('orange');
+            const colorTimer = setTimeout(revertColor, 1000);
+
+            // This bit doesn't reset. It should move right a bit, then back. Only works once.
+            titleRandomEvent.classList.add('move-right-left');
+            const moveTimer = setTimeout(revertMove, 1000);
+
+
+
             revertTwistFocusElementsToBlack();
             revertTwistActionElementsToBlack();
-            
-            alert("Random Event!");
+
             let twist_focus_die = roll1d6();
             const twistFocusEntry = findTwistFocusRow(twist_focus_die);
             changeTargetElementToOrange(twistFocusEntry.element_id);
@@ -63,6 +79,16 @@ const actionOutcomes = [
             const twistActionEntry = findTwistActionRow(twist_action_die);
             changeTargetElementToOrange(twistActionEntry.element_id);
         };
+
+        function revertColor() {
+            titleRandomEvent.classList.remove('orange');
+        };
+
+        function revertMove() {
+            titleRandomEvent.classList.remove('move-right-left');
+            void titleRandomEvent.offsetWidth;
+        };
+
 
         btnForceRandomEvent.addEventListener('click', () => {
             twistYes();
