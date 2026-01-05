@@ -69,8 +69,8 @@ const actionOutcomes = [
             
             let elements;
             
-            //elements = document.querySelectorAll('.outcomes, .focus, .action')
-            //revertElementsToBlack(elements);
+            elements = document.querySelectorAll('.focus, .action')
+            revertElementsToBlack(elements);
 
             // color pulse
             titleRandomEvent.classList.add('orange');
