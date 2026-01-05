@@ -66,6 +66,11 @@ const actionOutcomes = [
         });
 
         function twistYes() {
+            
+            let elements;
+            
+            //elements = document.querySelectorAll('.outcomes, .focus, .action')
+            //revertElementsToBlack(elements);
 
             // color pulse
             titleRandomEvent.classList.add('orange');
@@ -79,8 +84,13 @@ const actionOutcomes = [
             titleRandomEvent.classList.add('move-right-left');
 
 
-            revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack();
+            // Instead of these...
+            //revertTwistFocusElementsToBlack();
+            //revertTwistActionElementsToBlack();
+
+            // I will try...
+            //elements = document.querySelectorAll('.outcomes, .focus, .action')
+            //revertElementsToBlack(elements);
 
             let twist_focus_die = roll1d6();
             const twistFocusEntry = findTwistFocusRow(twist_focus_die);
@@ -104,30 +114,13 @@ const actionOutcomes = [
         // // HELPERS 
 
         // Change Outcome elements to black
-        function revertElementsToBlack() {
-            const elements = document.querySelectorAll('.outcomes');
+        function revertElementsToBlack(elements) {
             elements.forEach(element => {
                 element.classList.remove('orange');
             });
         };
 
-        // new function to combine reverting elements to black
-
-        // Change Twist Focus Elements to black
-        function revertTwistFocusElementsToBlack() {
-            const elements = document.querySelectorAll('.focus');
-            elements.forEach(element => {
-                element.classList.remove('orange');
-            });
-        };
-
-        // Change Twist Action Elements to black
-        function revertTwistActionElementsToBlack() {
-            const elements = document.querySelectorAll('.action');
-            elements.forEach(element => {
-                element.classList.remove('orange');
-            });
-        };
+        
 
         // Change target element to orange
         function changeTargetElementToOrange(elementId) {
@@ -166,14 +159,13 @@ const actionOutcomes = [
 
         // Option A is Likely
         btnD6a.addEventListener('click', () => {
-            revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack();
+            let elements = document.querySelectorAll('.outcomes, .focus, .action')
+            revertElementsToBlack(elements);
             const rolla1 = roll1d6();
             const rolla2 = roll1d6();
             const result = (rolla1 >= rolla2) ? rolla1 : rolla2;
             const outcome = findActionOutcomeRow(result);
 
-            revertElementsToBlack();
             changeTargetElementToOrange(outcome.element_id);
             twistCheck();
 
@@ -181,26 +173,24 @@ const actionOutcomes = [
 
         // Option A and B have Equal Chance
         btnD6x.addEventListener('click', () => {
-            revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack();
+            let elements = document.querySelectorAll('.outcomes, .focus, .action')
+            revertElementsToBlack(elements);
             const result = roll1d6();
             const outcome = findActionOutcomeRow(result);
 
-            revertElementsToBlack();
             changeTargetElementToOrange(outcome.element_id);
             twistCheck();
         });
 
         // Option B is Likely
         btnD6b.addEventListener('click', () => {
-            revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack();
+            let elements = document.querySelectorAll('.outcomes, .focus, .action')
+            revertElementsToBlack(elements);
             const rolla1 = roll1d6();
             const rolla2 = roll1d6();
             const result = (rolla1 >= rolla2) ? rolla2 : rolla1;
             const outcome = findActionOutcomeRow(result);
             
-            revertElementsToBlack();
             changeTargetElementToOrange(outcome.element_id);
             twistCheck();
         });
