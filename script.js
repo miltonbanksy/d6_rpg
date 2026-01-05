@@ -19,15 +19,15 @@ const twistAction = [
 ];
 
 const delveFocus = [
-    {roll: 5, elementId: ""},
-    {roll: 3, elementId: ""},
-    {roll: 1, elementId: ""}
+    {roll: 5, elementId: "delve-focus-5"},
+    {roll: 3, elementId: "delve-focus-3"},
+    {roll: 1, elementId: "delve-focus-1"}
 ];
 
 const delveAction = [
-    {roll: 4, elementId: ""},
-    {roll: 2, elementId: ""},
-    {roll: 1, elementId: ""}
+    {roll: 4, elementId: "delve-action-4"},
+    {roll: 2, elementId: "delve-action-2"},
+    {roll: 1, elementId: "delve-action-1"}
 ];
 
 // To do... (maybe, just to tidy up...)
@@ -112,7 +112,7 @@ function twistCheck() {
 // Access the particular array, and cross-reference the die roll with the row
 function findRow(array, diceRoll) {
     return array.find(data => data.roll <= diceRoll);
-}
+};
 
 
 function roll1d6() {
@@ -179,8 +179,19 @@ btnD6b.addEventListener('click', () => {
     twistCheck();
 });
 
-// TO DO...
-btnDelvingJourneying.addEventListener('click', () => {
 
+btnDelvingJourneying.addEventListener('click', () => {
+    let die;
+    let entry;
+    let elements = document.querySelectorAll('.delve-focus, .delve-event');
+    revertElementsToBlack(elements);
+
+    die = roll1d6();
+    entry = findRow(delveFocus, die);
+    changeTargetElementToOrange(entry.elementId);
+
+    die = roll1d6();
+    entry = findRow(delveAction, die);
+    changeTargetElementToOrange(entry.elementId);
 });
 
