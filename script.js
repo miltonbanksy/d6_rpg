@@ -32,7 +32,9 @@ const delveAction = [
 
 // To do... (maybe, just to tidy up...)
 const newSceneFormats = [
-    {roll: 6, elementId: ""}
+    {roll: 6, elementId: "Meanwhile..."},
+    {roll: 4, elementId: "Quiet"},
+    {roll: 1, elementId: "Action"}
 ];
 
 
@@ -126,17 +128,11 @@ imgD6.addEventListener('click', () => {
     alert("You rolled a " + roll);
 });
 
+// New function for Meanwhile, Quiet, Action
 btnD6NewSceneFormat.addEventListener('click', () => {
-    let result = 0
-    const roll = Math.floor(Math.random() * 6) + 1;
-    if (roll >= 6) {
-        result = "Meanwhile...";
-    } else if (roll >= 4 ) {
-        result = "Quiet";
-    } else {
-        result = "Action";
-    }
-    displayD6NewSceneFormat.innerHTML = " " + result;
+    let roll = roll1d6();
+    const outcome = findRow(newSceneFormats, roll);
+    displayD6NewSceneFormat.innerHTML = outcome.elementId;
 });
 
 // Option A is Likely
